@@ -28,7 +28,8 @@ public class Flamingos{
 			System.out.println("1) Agregar pizza al catalogo");
 			System.out.println("2) Generar orden");
 			System.out.println("3) Imprimir ventas");
-			System.out.println("4) Salir");
+			System.out.println("4) Ordenar nombres de pedidos");
+			System.out.println("5) Salir");
 			opcion = sc.nextInt();
 			switch (opcion) {
 			case 1:
@@ -93,7 +94,25 @@ public class Flamingos{
 					System.out.println("Total: " + ordenReporte.getTotal());
 				}
 				break;
-			case 4:
+				case 4:
+					String nombre[] = new String[pedidos.size()];
+					for (int i=0; i<pedidos.size(); i++){
+						nombre[i] = pedidos.get(i).getNombreCliente();
+					}
+					String auxiliar;
+					for (int i=0; i< (nombre.length-1); i++){
+						for (int j=0; j< (nombre.length-1); j++){
+							if(nombre[j].compareTo(nombre[j+1]) > 0){
+								auxiliar = nombre[j];
+								nombre[j] = nombre[j+1];
+								nombre[j+1] = auxiliar;
+							}
+						}
+					}
+					for (int i=0; i<nombre.length; i++){
+						System.out.println("Nombres : " + nombre[i]);
+					}
+			case 5:
 				System.out.println("Adios!!");
 				isExit = true;
 				break;
